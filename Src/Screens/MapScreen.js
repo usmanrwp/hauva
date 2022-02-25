@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import {
     View, Text, StatusBar, Image, Pressable,
-    StyleSheet, Modal, FlatList
+    StyleSheet, Modal, FlatList, PermissionsAndroid
 } from 'react-native'
 
 import { iconPath } from '../Constants/icon'
@@ -15,8 +15,7 @@ import Fonticon from '../Constants/FontIcon';
 import Geocoder from 'react-native-geocoding';
 import axios from 'axios';
 import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
-import Geolocation from '@react-native-community/geolocation';
-
+import Geolocation from "@react-native-community/geolocation";
 export default function MapScreen(props) {
 
     const [region, setRegion] = useState({
@@ -70,15 +69,17 @@ export default function MapScreen(props) {
 
     useEffect(() => {
         getAllAddress("Koirapuisto")
-        Geocoder.init("AIzaSyC8uzc-VUCpu4LKln_puqRrBbrmWdTIJC4");
+        Geocoder.init("AIzaSyAMvXKIa57ANmkM2xVsqTODGJJ8ZQENby0");
         CheckLocation()
     }, [])
 
     useFocusEffect(
         React.useCallback(() => {
+            getCurrentLoc()
             // alert(props?.route?.params?.category)
         }, [])
     );
+
 
     const CheckLocation = () => {
 
@@ -99,6 +100,7 @@ export default function MapScreen(props) {
     }
 
     const getCurrentLoc = async () => {
+
         Geolocation.getCurrentPosition(
             async position => {
                 // alert(JSON.stringify(position))
@@ -112,7 +114,7 @@ export default function MapScreen(props) {
             error => {
                 console.log("locations ", JSON.stringify(error))
             },
-            { enableHighAccuracy: true, timeout: 2000 }
+            { enableHighAccuracy: false, timeout: 2000 }
         );
     }
 
@@ -208,7 +210,7 @@ export default function MapScreen(props) {
                     style={{ flex: 1 }}
                     region={region}>
                     <>
-                        <Marker coordinate={{ latitude: region?.latitude , longitude: region?.longitude }}
+                        <Marker coordinate={{ latitude: region?.latitude, longitude: region?.longitude }}
                             style={{ alignItems: "center" }}>
                             {/* <View style={{ backgroundColor: "black", alignSelf: "center", borderRadius: 5 }}>
                                     <Text style={{ color: "#fff", paddingHorizontal: 5 }}>{marker?.otsikko}</Text>
