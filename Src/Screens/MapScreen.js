@@ -69,7 +69,7 @@ export default function MapScreen(props) {
 
     useEffect(() => {
         getAllAddress("Koirapuisto")
-        Geocoder.init("AIzaSyAMvXKIa57ANmkM2xVsqTODGJJ8ZQENby0");
+        Geocoder.init("AIzaSyAJ8__MjFt3UCIocKXW2syh03977DCp5F8");
         CheckLocation()
     }, [])
 
