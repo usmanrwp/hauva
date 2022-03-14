@@ -9,6 +9,8 @@ const BeVietnamPro_Regular = "BeVietnamPro-Regular";
 const BeVietnamPro_SemiBold = "BeVietnamPro-SemiBold";
 const BeVietnamPro_Thin = "BeVietnamPro-Thin";
 
+const mapApiKey = "AIzaSyAJ8__MjFt3UCIocKXW2syh03977DCp5F8";
+
 
 export const fonts = {
    BeVietnamPro_Black ,
@@ -20,4 +22,5 @@ export const fonts = {
    BeVietnamPro_Regular ,
    BeVietnamPro_SemiBold ,
    BeVietnamPro_Thin ,
+   mapApiKey
 };
